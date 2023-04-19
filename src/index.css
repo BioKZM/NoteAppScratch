@@ -1,0 +1,148 @@
+body,html
+{
+  overflow: hidden;
+  background-color: #111;
+  width: 100%;
+  height: 100%;
+}
+#titleBar
+{
+  position: absolute;
+  width: 100%;
+  height: 35px;
+  white-space:nowrap;
+  background-color:#1d1d1dcf;
+}
+#sideBar
+{
+  float:left;
+  width: 50px;
+  height: 100%;
+  background-color: rgb(46, 46, 46);
+}
+#notes
+{
+  display:block;
+  width: 50px;
+  height: 46px;
+  position: relative;
+  padding:10px;
+}
+#notes:hover
+{
+  transition: 0.2s;
+  background-color: #111;
+}
+#addNote
+{
+  position: absolute;
+  height: 46px;
+  width: 50px;
+  padding-top:10px;
+  padding-left:10px;
+}
+#addNote:hover
+{
+  transition: 0.2s;
+  background-color: #111;
+}
+#settings
+{
+  width: 50px;
+  height: 45px;
+  bottom: 0px;
+  position: fixed;
+  padding-top:10px;
+  padding-left:8px;
+}
+#settings:hover
+{
+  transition: 0.2s;
+  background-color: #111;
+}
+#noteBar
+{
+  float:left;
+  position:absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #111;
+  left:50px;
+}
+#textAreaDiv
+{
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top:30px;
+  left:60px;
+  font-family: 'Rubik', sans-serif;
+}
+#noteHoverDiv
+{
+  height: 35px; 
+}
+
+
+/* =================================================================
+*/
+.noteClass
+{
+  color : red;
+  display:inline-block;
+  width: 150px;
+  height: 35px;
+  background-color: rgb(41, 41, 41);
+  margin-right:3px;
+}
+
+.textDivClass
+{
+  position: relative;
+  top: 5px;
+  left: 10px;
+  display:inline-block;
+  font-family: 'Rubik', sans-serif;
+  font-size:17px;
+  user-select:none;
+}
+
+.closeButtonClass
+{
+  position: relative;
+  float:right;
+  top:5px;
+  margin-right: 10px;
+  user-select:none;
+}
+
+.textAreaClass
+{
+  position: absolute;
+  top:30px;
+  width: calc(100% - 50px);
+  height: calc(100% - 50px);
+  color: white;
+  background-color: #111;
+  box-sizing: border-box;
+  border:none;
+  resize: none;
+  outline: none;
+}
+
+.textAreaClass:focus
+{
+  caret-color: grey;
+}
+
+.divActive
+{
+  position: relative;
+  color : red;
+  display:inline-block;
+  width: 150px;
+  height: 35px;
+  margin-right:3px;
+  background-color:#111;
+  transition: background-color 0.15s ease-out;
+}

@@ -83,6 +83,30 @@ body,html
   height: 35px; 
 }
 
+#settingsDiv
+{
+  font-family:'Rubik',sans-serif;
+  width: 100%;
+  height: 100%;
+  color:white;
+}
+
+#themeModDiv
+{
+  position: relative;
+  /* width: 350px;
+  height: 150px; */
+  top:10px;
+  left:10px;
+  display:inline-block;
+  /* flex-direction: row-reverse; */
+}
+
+#themeP
+{
+  display:inline-block;
+  margin-right:10px;
+}
 
 /* =================================================================
 */
@@ -129,6 +153,19 @@ body,html
   resize: none;
   outline: none;
 }
+.textAreaClass.white
+{
+  position: absolute;
+  top:30px;
+  width: calc(100% - 50px);
+  height: calc(100% - 50px);
+  color: black;
+  background-color: rgb(182, 181, 181);
+  box-sizing: border-box;
+  border:none;
+  resize: none;
+  outline: none;
+}
 
 .textAreaClass:focus
 {
@@ -145,4 +182,49 @@ body,html
   margin-right:3px;
   background-color:#111;
   transition: background-color 0.15s ease-out;
+}
+
+.whiteBox
+{
+  position:relative;
+  display:inline-block;
+  width: 30px;
+  height: 30px;
+  background-color: white;
+  margin-right:5px;
+  top:7px;
+  border:1px solid rgb(0, 0, 0);
+}
+
+.blackBox
+{
+  position:relative;
+  display:inline-block;
+  width: 30px;
+  height: 30px;
+  background-color: black;
+  margin-right:5px;
+  top:7px;
+  border:1px solid grey;
+  /* color : #b6b5b5; */
+}
+
+.whiteThemeSideBar
+{
+  background-color: #e7e7e7;
+  color:black;
+}
+.whiteThemeNoteBar
+{
+  background-color: #b6b5b5;
+  color:black;
+}
+
+.white
+{
+  background-color: rgb(205, 205, 205);
+}
+.whiteThemeNoteBar
+{
+  background-color: rgb(165, 165, 165) ;
 }

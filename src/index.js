@@ -23,6 +23,8 @@ const createWindow = () => {
     // frame:false,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
+      nodeIntegration: true,
+      enableRemoteModule:true,
     },
   });
 
@@ -31,8 +33,13 @@ const createWindow = () => {
   // moveWindow();
   // Open the DevTools.
   mainWindow.webContents.openDevTools();
+  // mainWindow.webContents.on('did-finish-load', () => {
+  //   mainWindow.webContents.executeJavaScript(`
+  //     window.require = require;
+  //   `);
+  // });
 };
-
+// nativeTheme.themeSource = 'light';
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
@@ -54,34 +61,3 @@ app.on('activate', () => {
     createWindow();
   }
 });
-
-// In this file you can include the rest of your app's specific main process
-// code. You can also put them in separate files and import them here.
-// function moveWindow() {
-//   const currentWindow = remote.getCurrentWindow();
-//   currentWindow.setResizable(true);
-//   currentWindow.setMovable(true);
-
-//   let initialPosition = currentWindow.getPosition();
-//   let offsetX, offsetY;
-
-//   document.getElementById("titleBar").addEventListener("mousedown", function(e) {
-//     offsetX = e.screenX - initialPosition[0];
-//     offsetY = e.screenY - initialPosition[1];
-//     document.addEventListener("mousemove", dragWindow, true);
-//   });
-
-//   document.addEventListener("mouseup", function() {
-//     document.removeEventListener("mousemove", dragWindow, true);
-//     currentWindow.setPosition(initialPosition[0], initialPosition[1]);
-//     currentWindow.setResizable(false);
-//     currentWindow.setMovable(false);
-//   });
-
-//   function dragWindow(e) {
-//     let x = e.screenX - offsetX;
-//     let y = e.screenY - offsetY;
-//     currentWindow.setPosition(x, y);
-//     initialPosition = [x, y];
-//   }
-// }

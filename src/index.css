@@ -316,6 +316,10 @@ body,html
   background-color:#111;
   transition: background-color 0.15s ease-out;
 }
+.divActive .white
+{
+  background-color:rgb(182, 181, 181);
+}
 
 .whiteBox
 {

@@ -207,7 +207,7 @@ function changeClass()
     if (currentTheme == "white")
     {
         $('.noteClass').click(function() {
-            $(this).addClass('divActive');
+            $(this).addClass('divActive white');
             $('.noteClass').not(this).removeClass('divActive');
             $('.noteClass:not(.divActive)').children('#textAreaDiv').hide();
             $('.noteClass.divActive').children('#textAreaDiv').show();

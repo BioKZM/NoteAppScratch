@@ -2,7 +2,21 @@
 <div id = "settingsDiv">
     <div id = "themeModDiv">
         <p id ="themeP">Tema: </p>
-        <a href="#" class = "blackBox" onclick="changeDarkTheme()"></a>
-        <a href="#" class = "whiteBox" onclick="changeWhiteTheme()"></a>
+        <a href="#" class = "blackBox" onclick="changeThemeToDark()"></a>
+        <a href="#" class = "whiteBox" onclick="changeThemeToWhite()"></a>
     </div>
+    <div id = "fontChanger">
+        <p id = "fontP">Font: </p>
+        <a style = "font-style:italic" href = "#" onclick="changeFontItalic()">İtalik</a>
+        |
+        <a style = "font-style:normal" href = "#" onclick="changeFontNormal()">Normal</a>
+        |
+        <a style = "font-weight: 700;" href = "#" onclick="changeFontBold()"">Kalın</a>
+    </div>
+    <div id = "colorChanger">
+        <p id = "themeColor">Tema Rengi: </p>
+        <input type="color" id="colorPicker">
+        <a id = "checkButton" onclick="changeThemeColor()"> ✓ </a>
+    </div>
+    <script>changeColorPickerValue()</script>
 </div>

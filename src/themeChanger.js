@@ -1,13 +1,29 @@
 let currentTheme = theme.get;
 
-// console.log(theme.write("dark"));
 if (currentTheme == "white")
 {
     changeWhiteTheme();
 }
-else
+else if (currentTheme == "black")
 {
     changeDarkTheme();
 }
+
+
+let currentFont = theme.getf;
+if (currentFont == "italic")
+{
+    changeFontItalic();
+}
+else if (currentFont == "normal")
+{
+    changeFontNormal();
+}
+else if (currentFont == "bold")
+{
+    changeFontBold();
+}
+
+
 
 

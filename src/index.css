@@ -47,6 +47,21 @@ body,html
   padding-top:10px;
   padding-left:10px;
 }
+#openButton
+{
+  position:absolute;
+  height: 46px;
+  width: 50px;
+  top:93px;
+  padding-top:10px;
+  padding-left:10px;
+  display:none;
+}
+#openButton:hover
+{
+  transition:0.2s;
+  background-color:#111;
+}
 #addNote:hover
 {
   transition: 0.2s;
@@ -70,18 +85,18 @@ body,html
 {
   float:left;
   position:absolute;
-  width: 100%;
+  width: calc(100% - 200px);
   height: 100%;
   background-color: #111;
-  left:50px;
+  left:300px;
 }
 #textAreaDiv
 {
-  position: fixed;
-  width: 100vw;
+  position: absolute;
+  width: calc(var(--screen-width) - 220px);
   height: 100vh;
   top:30px;
-  left:60px;
+  left:10px;
   font-family: 'Rubik', sans-serif;
   font-weight: 300;
 }
@@ -159,7 +174,7 @@ body,html
     flex-direction: row;
     align-items: center;
     justify-content:space-evenly;
-    width: var(--screen-width);
+    width: calc(var(--screen-width) - 250px);
     height: 90%;
 }
 #themeDiv
@@ -239,13 +254,39 @@ body,html
   text-decoration: none;
   color:var(--main-color);
 }
+#notePanel
+{
+  width: 250px;
+  height: 100%;
+  float:left;
+  background-color: rgb(142, 142, 142);
+  position: absolute;
+  left: 50px;
+}
+#notePanelWrapper
+{
+  position: relative;
+}
+#closeButtonDiv
+{
+  float:right;
+  width: 35px;
+  height: 35px;
+  padding-top:5px;
+}
+#closeArrow
+{
+  margin:5px;
+  color: var(--main-color);
+}
+
 /* =================================================================
 */
 .noteClass
 {
   color : var(--main-color);
   display:inline-block;
-  width: 150px;
+  width: 180px;
   height: 35px;
   background-color: rgb(41, 41, 41);
   margin-right:3px;
@@ -310,7 +351,7 @@ body,html
   position: relative;
   color : var(--main-color);
   display:inline-block;
-  width: 150px;
+  width: 180px;
   height: 35px;
   margin-right:3px;
   background-color:#111;
@@ -399,4 +440,12 @@ body,html
 .centerText
 {
     text-align: center;
+}
+.saveButtonClass
+{
+  position: relative;
+  float:right;
+  top:5px;
+  margin-right: 30px;
+  user-select:none;
 }

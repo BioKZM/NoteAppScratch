@@ -1,4 +1,4 @@
-const { app, BrowserWindow, ipcMain, dialog } = require('electron');
+const { app, BrowserWindow, ipcMain, dialog, globalShortcut } = require('electron');
 const path = require('path');
 // import { moveWindow } from './script.js';
 
@@ -26,11 +26,24 @@ const createWindow = () => {
   // moveWindow();
   // Open the DevTools.
   mainWindow.webContents.openDevTools();
+  // globalShortcut.register('CommandOrControl+S',() => {
+  //   let textArea = document.getElementById('textAreaID');
+  //   data = textArea.value;
+  //   fs.write("C:\\Users\\berke\\AppData\\Roaming\\NoteAppData\\notes.json",data);
+  // });
+    // const fs = require('fs');
+    // const data = {"testData" : }
+    // const jsonData = JSON.stringify(data);
+    // fs.writeFileSync("C:\\Users\\berke\\AppData\\Roaming\\NoteAppData\\notes.json",jsonData);
+    // console.log("Test");
+        
+  ;
   // mainWindow.webContents.on('did-finish-load', () => {
   //   mainWindow.webContents.executeJavaScript(`
   //     window.require = require;
   //   `);
   // });
+
 };
 ipcMain.handle("showWarning", async (event, options) => {
   return await dialog.showMessageBoxSync(null, options);

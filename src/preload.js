@@ -1,69 +1,55 @@
-const { contextBridge, ipcRenderer } = require('electron');
-let getTheme = () => 
-{
-    const fs = require('fs');
-    const data = fs.readFileSync("C:\\Users\\berke\\AppData\\Roaming\\NoteAppData\\settings.json");
-    const theme = JSON.parse(data).theme;
-    return theme;
-}
-let writeTheme = (currentTheme) => 
-{
-    const currentFont = getFont();
-    const currentColor = getColor();
-    const fs = require('fs');
-    const data = {theme : currentTheme, font: currentFont, color: currentColor};
-    const jsonData = JSON.stringify(data);
-    fs.writeFileSync("C:\\Users\\berke\\AppData\\Roaming\\NoteAppData\\settings.json",jsonData);
-}
-let getFont = () => 
-{
-    const fs = require('fs');
-    const data = fs.readFileSync("C:\\Users\\berke\\AppData\\Roaming\\NoteAppData\\settings.json");
-    const font = JSON.parse(data).font;
-    return font;
-}
-let writeFont = (currentFont) =>
-{
-    const currentTheme = getTheme();
-    const currentColor = getColor();
-    const fs = require('fs');
-    const data = {theme : currentTheme, font: currentFont, color: currentColor};
-    const jsonData = JSON.stringify(data);
-    fs.writeFileSync("C:\\Users\\berke\\AppData\\Roaming\\NoteAppData\\settings.json",jsonData);
+const { contextBridge } = require('electron');
+const crypto = require('crypto-js');
+const path = `${process.env.APPDATA}\\NoteAppData`;
+const fs = require('fs');
+// const appDataPath = `${process.env.APPDATA}\\NoteAppData`;
+// console.log(appDataPath);
 
-}
-let getColor = () =>
-{
-    const fs = require('fs');
-    const data = fs.readFileSync("C:\\Users\\berke\\AppData\\Roaming\\NoteAppData\\settings.json");
-    const color = JSON.parse(data).color;
-    return color;
-}
-let writeColor = (currentColor) => 
-{
-    const currentFont = getFont();
-    const currentTheme = getTheme();
-    const fs = require('fs');
-    const data = {theme : currentTheme, font: currentFont, color: currentColor};
-    const jsonData = JSON.stringify(data);
-    fs.writeFileSync("C:\\Users\\berke\\AppData\\Roaming\\NoteAppData\\settings.json",jsonData);
 
-}
-let showWarning = (options) =>
+function getFiles()
 {
-    ipcRenderer.invoke("showWarning", options).then((selection) => {
-        if (selection === 0) {
-            location.reload();
+    fs.readdir(path+"\\notes\\", (err,files) => {
+        // console.log(files);
+        // return files;
+        let array = [];
+        // files.forEach(file => array.push(file));
+        // console.log(typeof array);
+        // return array;
+        files.forEach(file => array.push(file));
+        console.log(array);
+        return array;
+
+    });
+}
+
+function checkFile()
+{
+    fs.watch(path+"\\notes\\", {recursive: true}, (eventType,filename) => {
+        if (eventType == "change")
+        {
+            return true;
+        }
+        else
+        {
+            return false;
         }
     });
 }
-contextBridge.exposeInMainWorld('theme', {
-    get: getTheme(),
-    write: (currentTheme) => writeTheme(currentTheme),
-    getf : getFont(),
-    writef : (currentFont) => writeFont(currentFont),
-    getc : getColor(),
-    writec : (currentColor) => writeColor(currentColor),
-    warning : (options) => showWarning(options),
 
+function saveFile(key,value)
+{
+    // const path = `C:\\Users\\berke\\AppData\\Roaming\\NoteAppData\\notes\\${key}.json`;
+    let encrypted = crypto.AES.encrypt(value,key).toString();
+
+    const data = {noteData : encrypted,};
+    let jsonData = JSON.stringify(data);
+    fs.writeFileSync(path + `\\notes\\${key}.json`,jsonData);
+    const bytes = crypto.AES.decrypt(encrypted,key);
+    const originalData = bytes.toString(crypto.enc.Utf8);
+    console.log(originalData);
+}
+contextBridge.exposeInMainWorld('file',{
+    save: (key,value) => saveFile(key,value),
+    check: () => checkFile(),
+    get: () => getFiles()
 });

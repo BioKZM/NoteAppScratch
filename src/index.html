@@ -32,12 +32,12 @@
       referrerpolicy="no-referrer"
     />
     <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Rubik:ital,wght@0,300;0,700;1,300&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="test.css" /.>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="index.css">
     <script src="script.js"></script>
     <script type="module" src="themeChanger.js"></script>
+    <script src="https://kit.fontawesome.com/f209ed8b1a.js" crossorigin="anonymous"></script>
   </head>
   <body>
     <div id = "sideBar">
@@ -47,10 +47,20 @@
       <a href = "#" id = "addNote" onclick = "add()">
         <i id = "addIcon" class="fa-solid fa-plus fa-2xl" style = "color:red"></i>
       </a>
+      <a href = "#" id = "openButton" onclick = "openNotePanel()">
+        <i class="fa-sharp fa-solid fa-right-from-bracket fa-2xl"></i>
+      </a>
       <a href = "#" id = "settings" onclick = "loadSettings()">
         <i id = "settingsIcon" class="fa-solid fa-gear fa-2xl" style = "color:red"></i>
-        <script></script>
       </a>
+    </div>
+      <div id = "notePanel">
+      
+        <div id = "closeButtonDiv">
+          <a href = "#" id = "closeArrow" onclick = "closeNotePanel()">
+            <i class="fa-solid fa-arrow-left fa-xl"></i>
+          </a>
+        </div>
     </div>
     <div id = "noteBar">
       <div id = "titleBar">
@@ -95,7 +105,6 @@
     </div>
   </body>
   <script>
-    // console.log("test" + getCurrentTheme());
     setCurrentTheme();
   </script>
 </html>

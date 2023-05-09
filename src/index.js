@@ -36,8 +36,6 @@ const createWindow = () => {
     // const jsonData = JSON.stringify(data);
     // fs.writeFileSync("C:\\Users\\berke\\AppData\\Roaming\\NoteAppData\\notes.json",jsonData);
     // console.log("Test");
-        
-  ;
   // mainWindow.webContents.on('did-finish-load', () => {
   //   mainWindow.webContents.executeJavaScript(`
   //     window.require = require;
